@@ -20,6 +20,8 @@
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0">Delay (ms)</Label>
             <xctk:IntegerUpDown Grid.Column="1" 
+                                Value="{Binding Delay, 
+                RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 IsEnabled="{Binding IsChecked, ElementName=IsActive}" 
                                 TextAlignment="Left"/>
         </Grid>

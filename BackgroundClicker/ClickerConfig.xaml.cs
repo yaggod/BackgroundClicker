@@ -1,50 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BackgroundClicker
 {
-    /// <summary>
-    /// Логика взаимодействия для ClickerConfig.xaml
-    /// </summary>
-    public partial class ClickerConfig : UserControl
-    {
-        public static readonly DependencyProperty IsClickerEnabledProperty;
-        public static readonly DependencyProperty LabelTextProperty;
+	/// <summary>
+	/// Логика взаимодействия для ClickerConfig.xaml
+	/// </summary>
+	public partial class ClickerConfig : UserControl
+	{
+		public static readonly DependencyProperty IsClickerEnabledProperty;
+		public static readonly DependencyProperty LabelTextProperty;
+		public static readonly DependencyProperty DelayProperty;
 
-        public string LabelText
-        {
-            get => (string)GetValue(LabelTextProperty);
-            set => SetValue(LabelTextProperty, value);
-        }
+		public bool IsClickerEnabled
+		{
+			get => (bool)GetValue(IsClickerEnabledProperty);
+			set => SetValue(IsClickerEnabledProperty, value);
+		}
+
+		public string LabelText
+		{
+			get => (string)GetValue(LabelTextProperty);
+			set => SetValue(LabelTextProperty, value);
+		}
+
+		public int Delay
+		{
+			get => (int)GetValue(DelayProperty);
+			set => SetValue(DelayProperty, value);
+		}
 
 		static ClickerConfig()
-        {
+		{
 			IsClickerEnabledProperty =
-				DependencyProperty.RegisterAttached("IsClickerEnabled", typeof(bool), typeof(ClickerConfig));
+				DependencyProperty.Register("IsClickerEnabled", typeof(bool), typeof(ClickerConfig));
 			LabelTextProperty =
-				DependencyProperty.RegisterAttached("LabelText", typeof(string), typeof(ClickerConfig));
+				DependencyProperty.Register("LabelText", typeof(string), typeof(ClickerConfig));
+			DelayProperty =
+				DependencyProperty.Register("Delay", typeof(int), typeof(ClickerConfig));
 		}
 
 
 
 		public ClickerConfig()
-        {
-
-            InitializeComponent();
-        }
+		{
+			InitializeComponent();
+		}
 
 	}
 }
