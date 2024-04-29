@@ -6,9 +6,20 @@
         xmlns:local="clr-namespace:BackgroundClicker"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <local:ClickerConfig>
-            
-        </local:ClickerConfig>
-    </Grid>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <local:ClickerConfig x:Name="LeftClickerConfig" Grid.Column="0" LabelText="Left Button" 
+                                 IsClickerEnabled="{Binding LeftClicker.IsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Mode=OneWayToSource}" 
+                                 Delay="{Binding LeftClicker.ClickDelay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Mode=OneWayToSource}"
+                                 />
+            <local:ClickerConfig x:Name="RightClickerConfig" Grid.Column="1" LabelText="Right Button"
+                                 IsClickerEnabled="{Binding RightClicker.IsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Mode=OneWayToSource}" 
+                                 Delay="{Binding RightClicker.ClickDelay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Mode=OneWayToSource}"
+                                 />
+        </Grid>
+    </StackPanel>
 </Window>
