@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,8 +21,28 @@ namespace BackgroundClicker
     /// </summary>
     public partial class ClickerConfig : UserControl
     {
-        public ClickerConfig()
+        public static readonly DependencyProperty IsClickerEnabledProperty;
+        public static readonly DependencyProperty LabelTextProperty;
+
+        public string LabelText
         {
+            get => (string)GetValue(LabelTextProperty);
+            set => SetValue(LabelTextProperty, value);
+        }
+
+		static ClickerConfig()
+        {
+			IsClickerEnabledProperty =
+				DependencyProperty.RegisterAttached("IsClickerEnabled", typeof(bool), typeof(ClickerConfig));
+			LabelTextProperty =
+				DependencyProperty.RegisterAttached("LabelText", typeof(string), typeof(ClickerConfig));
+		}
+
+
+
+		public ClickerConfig()
+        {
+
             InitializeComponent();
         }
 

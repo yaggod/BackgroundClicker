@@ -8,14 +8,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="200">
     <StackPanel>
-        <CheckBox x:Name="IsActive">Enabled</CheckBox>
+        <Label Content="{Binding LabelText, 
+            RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+        <CheckBox x:Name="IsActive"
+                       IsChecked="{Binding IsClickerEnabled, 
+            RelativeSource={RelativeSource AncestorType=UserControl}}">Enabled</CheckBox>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0">Delay (ms)</Label>
-            <xctk:IntegerUpDown Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=IsActive}" TextAlignment="Left"/>
+            <xctk:IntegerUpDown Grid.Column="1" 
+                                IsEnabled="{Binding IsChecked, ElementName=IsActive}" 
+                                TextAlignment="Left"/>
         </Grid>
     </StackPanel>
 </UserControl>
