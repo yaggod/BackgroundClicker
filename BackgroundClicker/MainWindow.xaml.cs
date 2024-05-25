@@ -23,8 +23,6 @@ namespace BackgroundClicker
 
 		public MainWindow()
 		{
-			IntPtr hWnd = Process.GetProcessById(5952).MainWindowHandle;
-			LeftClicker.HWnd = hWnd;
 
 			InitializeComponent();
 		}
