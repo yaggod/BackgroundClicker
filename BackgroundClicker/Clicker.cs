@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 using System.Windows.Threading;
 
 namespace BackgroundClicker
 {
-    public class Clicker
-    {
-        public const uint LMBDOWN = 0x201;
+	public class Clicker
+	{
+		public const uint LMBDOWN = 0x201;
 		public const uint RMBDOWN = 0x204;
 
-        private readonly bool _isLeft;
-        private readonly DispatcherTimer _timer;
+		private readonly bool _isLeft;
+		private readonly DispatcherTimer _timer;
 
-        private uint ButtonCode => _isLeft ? LMBDOWN : RMBDOWN;
+		private uint ButtonCode => _isLeft ? LMBDOWN : RMBDOWN;
 
 		public int ClickDelay
 		{
 			get
 			{
-				return (int) _timer.Interval.TotalMilliseconds;
+				return (int)_timer.Interval.TotalMilliseconds;
 			}
 
 			set
@@ -54,7 +49,7 @@ namespace BackgroundClicker
 		}
 
 		private void Click()
-        {
+		{
 			PostMessage(HWnd, ButtonCode, IntPtr.Zero, IntPtr.Zero);
 			PostMessage(HWnd, ButtonCode + 1, IntPtr.Zero, IntPtr.Zero);
 		}
