@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <ComboBox ItemsSource="{Binding Processes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ProcessPicker}}}"
-                  >
+                             SelectedItem="{Binding CurrentProcess, RelativeSource={RelativeSource AncestorType=UserControl}}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
