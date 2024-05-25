@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BackgroundClicker"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="40" d:DesignWidth="200">
+             d:DesignHeight="50" d:Width="200">
     <StackPanel>
         <Label Content="{Binding LabelText, 
             RelativeSource={RelativeSource AncestorType=UserControl}}"/>
