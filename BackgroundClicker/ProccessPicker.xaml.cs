@@ -18,15 +18,16 @@ namespace BackgroundClicker
 			set => SetValue(CurrentProcessProperty, value);
 		}
 
-		public ReadOnlyCollection<Process> Processes
+		private readonly ObservableCollection<Process> _processes = new();
+		public ReadOnlyObservableCollection<Process> Processes
 		{
 			get;
-			private set;
 		}
 
 		public ProcessPicker()
 		{
 			InitializeComponent();
+			Processes = new(_processes);
 			Refresh();
 		}
 
@@ -39,8 +40,12 @@ namespace BackgroundClicker
 		public void Refresh()
 		{
 			Process[] allProcessess = Process.GetProcesses();
-			Processes = new ReadOnlyCollection<Process>(allProcessess.Where(process => process.MainWindowHandle != IntPtr.Zero).ToList());
+			var validProcesses = allProcessess.Where(process => process.MainWindowHandle != IntPtr.Zero);
+			_processes.Clear();
+			foreach(Process process in validProcesses)
+				_processes.Add(process);
 		}
+
 
 		private void Refresh(object sender, RoutedEventArgs e)
 		{
