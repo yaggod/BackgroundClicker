@@ -41,5 +41,10 @@ namespace BackgroundClicker
 			Process[] allProcessess = Process.GetProcesses();
 			Processes = new ReadOnlyCollection<Process>(allProcessess.Where(process => process.MainWindowHandle != IntPtr.Zero).ToList());
 		}
-	}
+
+		private void Refresh(object sender, RoutedEventArgs e)
+		{
+			Refresh();
+        }
+    }
 }

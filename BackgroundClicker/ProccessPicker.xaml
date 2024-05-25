@@ -11,7 +11,14 @@
         <Converters:ProcessToIconConverter x:Key="ProcessToIconConverter"/>
     </UserControl.Resources>
     <Grid>
-        <ComboBox ItemsSource="{Binding Processes, RelativeSource={RelativeSource AncestorType={x:Type local:ProcessPicker}, Mode=FindAncestor}}"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="7*"/>
+
+
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Click="Refresh" Content="Refresh"/>
+        <ComboBox Grid.Column="1" ItemsSource="{Binding Processes, RelativeSource={RelativeSource AncestorType={x:Type local:ProcessPicker}, Mode=FindAncestor}}"
                              SelectedItem="{Binding CurrentProcess, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
