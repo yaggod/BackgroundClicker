@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Windows.Threading;
 
 namespace BackgroundClicker
@@ -28,7 +29,7 @@ namespace BackgroundClicker
 			}
 		}
 
-		public IntPtr HWnd
+		public Process SelectedProcess
 		{
 			get;
 			set;
@@ -50,8 +51,8 @@ namespace BackgroundClicker
 
 		private void Click()
 		{
-			PostMessage(HWnd, ButtonCode, IntPtr.Zero, IntPtr.Zero);
-			PostMessage(HWnd, ButtonCode + 1, IntPtr.Zero, IntPtr.Zero);
+			PostMessage(SelectedProcess.MainWindowHandle, ButtonCode, IntPtr.Zero, IntPtr.Zero);
+			PostMessage(SelectedProcess.MainWindowHandle, ButtonCode + 1, IntPtr.Zero, IntPtr.Zero);
 		}
 
 		[DllImport("user32.dll")]
