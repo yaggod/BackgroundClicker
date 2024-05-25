@@ -16,6 +16,8 @@ namespace BackgroundClicker.Converters
 			try
 			{
 				var process = (value as Process);
+				if (process == null || targetType != typeof(ImageSource))
+					throw new InvalidCastException();
 				Icon? icon = Icon.ExtractAssociatedIcon(process.MainModule.FileName);
 				ImageSource imageSource = Imaging.CreateBitmapSourceFromHIcon(
 				icon.Handle,

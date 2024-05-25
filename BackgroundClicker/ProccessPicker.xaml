@@ -18,6 +18,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding Converter={StaticResource ProcessToIconConverter}}"/>
                         <Label Content="{Binding ProcessName}"/>
+                        <Label Content="{Binding Id}"/>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
