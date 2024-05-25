@@ -4,10 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BackgroundClicker"
+        xmlns:Converters="clr-namespace:BackgroundClicker.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Converters:IdentityMultiConverter x:Key="MultiConverter"/>
+    </Window.Resources>
     <StackPanel>
-        <local:ProcessPicker Height="50"></local:ProcessPicker>
+        <local:ProcessPicker Height="50">
+            <local:ProcessPicker.CurrentProcess>
+                <MultiBinding Converter="{StaticResource MultiConverter}" Mode="OneWayToSource">
+                    <Binding Path="LeftClicker.SelectedProcess"  RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}" Mode="OneWayToSource"/>
+                    <Binding Path="RightClicker.SelectedProcess"  RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}" Mode="OneWayToSource"/>
+                </MultiBinding>
+            </local:ProcessPicker.CurrentProcess>
+        </local:ProcessPicker>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
