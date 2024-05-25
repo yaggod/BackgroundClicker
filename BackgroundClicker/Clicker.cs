@@ -51,6 +51,8 @@ namespace BackgroundClicker
 
 		private void Click()
 		{
+			if (SelectedProcess == null)
+				return;
 			PostMessage(SelectedProcess.MainWindowHandle, ButtonCode, IntPtr.Zero, IntPtr.Zero);
 			PostMessage(SelectedProcess.MainWindowHandle, ButtonCode + 1, IntPtr.Zero, IntPtr.Zero);
 		}
